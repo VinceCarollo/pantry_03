@@ -42,6 +42,6 @@ class RecipeTest < Minitest::Test
     stir_fry.add_ingredient(ginger, 1)
     stir_fry.add_ingredient(bok_choy, 2)
 
-    assert_equal 40, stir_fry.total_calories
+    assert_equal 55, stir_fry.total_calories
   end
 end

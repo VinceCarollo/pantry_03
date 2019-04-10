@@ -17,7 +17,7 @@ class Recipe
   end
 
   def total_calories
-    @ingredients.keys.sum{|ingredient| ingredient.calories}
+    @ingredients.sum{|ingredient, qty| qty * ingredient.calories}
   end
 
 end
