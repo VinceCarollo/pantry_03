@@ -23,7 +23,8 @@ class RecipeTest < Minitest::Test
     stir_fry.add_ingredient(ginger, 1)
     stir_fry.add_ingredient(bok_choy, 2)
 
-    assert_equal [{1 => ginger}, {2 => bok_choy}], stir_fry.ingredients
+    expected = {ginger => 1, bok_choy => 2}
+    assert_equal expected, stir_fry.ingredients
   end
 
   def test_it_can_check_qty_needed

@@ -3,32 +3,20 @@ class Recipe
 
   def initialize(name)
     @name = name
-    @ingredients = []
+    @ingredients = {}
   end
 
   def add_ingredient(ingredient, qty_needed)
-    ingredient_info = {}
-    ingredient_info[qty_needed] = ingredient
-    @ingredients << ingredient_info
+    @ingredients[ingredient] = qty_needed
   end
 
   def check_qty(ingredient_needed)
-    qty = 0
-    @ingredients.each do |ingredient_info|
-      qty = ingredient_info.find do |qty_needed, ingredient|
-        ingredient == ingredient_needed
-      end
-    end
-    qty.first
+    @ingredients.find do |ingredient, qty_needed|
+      qty_needed if ingredient == ingredient_needed
+    end[1]
   end
 
   def total_ingredients
-    total_cals = 0
-    @ingredients.each do |ingredient_info|
-      total_cals += ingredient_info.sum do |qty_needed, ingredient|
-        ingredient.calories
-      end
-    end
-    total_cals
+    @ingredients.keys.sum{|ingredient| ingredient.calories}
   end
 end
